@@ -80,6 +80,22 @@ class ToolNode(Node):
             data = [now_node.data] + data
             now_node = now_node.father
         return data
+    
+    @property
+    def process_json(self):
+        """
+        Generate a list of data from current node up to root node.
+
+        Returns:
+            data (List): A list of data from current node up to root node.
+        """
+
+        data = []
+        now_node = self
+        while now_node.father != None:
+            data = [now_node.to_json()] + data
+            now_node = now_node.father
+        return data
 
     def to_json(self):
         """

@@ -41,7 +41,7 @@ def get_posterior_knowledge(all_plan: Plan,
         action_process = summarize_action(finish_node.process, terminal_plan)
         all_plan = summarize_plan(all_plan)
     else:
-        action_process = json.dumps(finish_node.process,indent=2,ensure_ascii=False)
+        action_process = json.dumps(finish_node.process_json,indent=2,ensure_ascii=False)
         all_plan = json.dumps(all_plan, indent=2, ensure_ascii=False)
         terminal_plan = json.dumps(terminal_plan, indent=2, ensure_ascii=False)
         

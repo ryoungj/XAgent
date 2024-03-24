@@ -118,7 +118,7 @@ class ToolAgent(BaseAgent):
             except Exception as e:  
                 messages[0] = change_tool_call_description(messages[0],reverse=True)
                 tool_call_args = objgenerator.dynamic_json_fixes(
-                    broken_json=tool_call_args,
+                    broken_json=tool_call_args if isinstance(tool_call_args, str) else json5.dumps(tool_call_args),
                     function_schema=tool_schema,
                     messages=messages,
                     error_message=str(e))["choices"][0]["message"]["function_call"]["arguments"]
